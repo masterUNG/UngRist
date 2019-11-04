@@ -1,3 +1,4 @@
+import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -7,6 +8,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // Explicit
+  String resultCode = '';
 
   // Method
   Widget authenButton() {
@@ -16,9 +18,29 @@ class _HomeState extends State<Home> {
         'Authentication',
         style: TextStyle(color: Colors.white),
       ),
-      onPressed: () {},
+      onPressed: () {
+        print('You Click Authen');
+        readQRcode();
+      },
     );
   }
+
+  Future<void> readQRcode()async{
+
+    try {
+
+      resultCode = await BarcodeScanner.scan();
+      print('resultCode = $resultCode');
+      
+
+      
+    } catch (e) {
+    }
+
+  }
+
+
+
 
   Widget showLogo() {
     return Container(
