@@ -51,8 +51,10 @@ class _HomeState extends State<Home> {
     } else {
       
       for (var map in result) {
+        print('Work');
         UserModel userModel = UserModel.fromJSON(map);
-        MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context){return MyService();});
+        MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context){return MyService(userModel: userModel,);});
+        Navigator.of(context).pushAndRemoveUntil(materialPageRoute, (Route<dynamic> route){return false;});
       }
 
     }
